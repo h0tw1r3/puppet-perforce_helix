@@ -1,0 +1,33 @@
+---
+.rubocop.yml:
+  default_configs:
+    inherit_from: ".rubocop_todo.yml"
+    AllCops:
+      Include:
+        - "rakelib/*.rake"
+      Exclude:
+        - ".modules/**/*"
+    Style/SingleLineMethods:
+      Exclude:
+        - "rakelib/test.rake"
+Rakefile:
+  default_disabled_lint_checks:
+    - '140chars'
+.gitignore:
+  paths:
+    - .modules/
+    - .resource_types/
+    - bolt-debug.log
+    - .plan_cache.json
+    - .plugin_cache.json
+    - .task_cache.json
+    - .rerun.json
+    - .terraform/
+    - .terraform*lock.hcl
+    - Puppetfile
+    - pdk.yaml
+.pdkignore:
+  paths:
+    - /provision.yaml
+spec/default_facts.yml:
+  delete: true
