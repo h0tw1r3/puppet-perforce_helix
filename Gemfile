@@ -44,6 +44,9 @@ group :release_prep do
   gem "puppet-strings", '~> 4.0',         require: false
   gem "puppetlabs_spec_helper", '~> 7.0', require: false
 end
+group :debug do
+  gem "puppet-catalog_rspec", require: false, git: 'https://github.com/h0tw1r3/puppet-catalog_rspec.git'
+end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
 facter_version = ENV['FACTER_GEM_VERSION']

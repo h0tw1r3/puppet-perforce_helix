@@ -35,6 +35,10 @@ spec/spec_helper.rb:
   coverage_report: true
   minimum_code_coverage_percentage: 100
 Gemfile:
+  optional:
+    ':debug':
+      - gem: puppet-catalog_rspec
+        git: https://github.com/h0tw1r3/puppet-catalog_rspec.git
   overrides:
     - gem: puppetlabs_spec_helper
       version: '~> 7.0'
