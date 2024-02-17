@@ -6,7 +6,10 @@
   "license": "Apache-2.0",
   "source": "https://github.com/h0tw1r3/puppet-helix_core",
   "dependencies": [
-
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": ">= 9.2.0 < 10.0.0"
+    }
   ],
   "operatingsystem_support": [
     {
