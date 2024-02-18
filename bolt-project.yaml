@@ -1,0 +1,7 @@
+---
+name: helix_core
+plugin-hooks:
+  puppet_library:
+    plugin: puppet_agent
+    stop_service: true
+    collection: 'puppet8'

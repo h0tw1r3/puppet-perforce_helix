@@ -1,0 +1,18 @@
+---
+default:
+  provisioner: docker_exp
+  images:
+    - ghcr.io/h0tw1r3/litmusimage/redhat:8
+deb:
+  provisioner: docker_exp
+  images:
+    - ghcr.io/h0tw1r3/litmusimage/ubuntu:22.04
+rpm:
+  provisioner: docker_exp
+  images:
+    - ghcr.io/h0tw1r3/litmusimage/redhat:8
+ci:
+  provisioner: docker_exp
+  images:
+    - ghcr.io/h0tw1r3/litmusimage/redhat:8
+    - ghcr.io/h0tw1r3/litmusimage/ubuntu:22.04
