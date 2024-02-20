@@ -6,7 +6,7 @@ shared_examples 'apt source' do
   let(:is_key_source) { params[:gpg_key] =~ %r{^(puppet|https?)://} }
 
   it {
-    is_expected.to contain_class('Helix_core::Repository::Apt')
+    is_expected.to contain_class('Perforce_helix::Repository::Apt')
       .with(
         gpg_key:     params[:gpg_key],
         location:    params[:location],
@@ -28,13 +28,14 @@ shared_examples 'apt source' do
         location:          params[:location],
         comment:           'Perforce Package Source',
         release:           facts[:os]['distro']['codename'],
+        repos:             'release',
         architecture:      facts[:os]['architecture'],
         keyring:           params[:gpg_keyring],
       )
   }
 end
 
-describe 'helix_core::repository::apt' do
+describe 'perforce_helix::repository::apt' do
   let(:params) do
     {
       gpg_key:     'https://package.perforce.com/perforce.pubkey',

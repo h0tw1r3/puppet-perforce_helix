@@ -1,0 +1,7 @@
+<%- |
+  Hash $config,
+| -%>
+# MANAGED BY PUPPET
+<% $config.each |$key, $value| { if $value { -%>
+<%= $key %>=<%= String($value, '%#p') %>
+<%- } } %>

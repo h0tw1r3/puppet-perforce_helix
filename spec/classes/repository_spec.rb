@@ -3,18 +3,18 @@
 require 'spec_helper'
 require 'deep_merge'
 
-describe 'helix_core::repository' do
+describe 'perforce_helix::repository' do
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
 
       it {
         which = (facts[:os]['family'] == 'RedHat') ? 'to' : 'not_to'
-        is_expected.method(which).call contain_class('helix_core::repository::yum')
+        is_expected.method(which).call contain_class('perforce_helix::repository::yum')
       }
       it {
         which = (facts[:os]['family'] == 'Debian') ? 'to' : 'not_to'
-        is_expected.method(which).call contain_class('helix_core::repository::apt')
+        is_expected.method(which).call contain_class('perforce_helix::repository::apt')
       }
     end
   end

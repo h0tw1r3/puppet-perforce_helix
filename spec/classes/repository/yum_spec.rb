@@ -7,7 +7,7 @@ shared_examples 'yum repository' do
   let(:is_key_source) { params[:gpg_key] =~ %r{^(file|puppet)://} }
 
   it {
-    is_expected.to contain_class('Helix_core::Repository::Yum')
+    is_expected.to contain_class('Perforce_helix::Repository::Yum')
       .with(
         gpg_key:     params[:gpg_key],
         baseurl:     params[:baseurl],
@@ -42,7 +42,7 @@ shared_examples 'yum repository' do
   }
 end
 
-describe 'helix_core::repository::yum' do
+describe 'perforce_helix::repository::yum' do
   let(:params) do
     {
       baseurl:     "https://package.perforce.com/yum/rhel/#{facts[:os]['release']['major'].downcase}/#{facts[:os][:architecture]}",

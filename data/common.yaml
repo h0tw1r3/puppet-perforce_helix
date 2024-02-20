@@ -1,3 +1,15 @@
 ---
-helix_core::repository::apt::gpg_key: https://package.perforce.com/perforce.pubkey
-helix_core::repository::yum::gpg_key: https://package.perforce.com/perforce.pubkey
+perforce_helix::repository::apt::gpg_key: https://package.perforce.com/perforce.pubkey
+perforce_helix::repository::yum::gpg_key: https://package.perforce.com/perforce.pubkey
+
+perforce_helix::p4::ensure: installed
+perforce_helix::p4::packages:
+  - 'helix-cli'
+
+perforce_helix::p4d::ensure: installed
+perforce_helix::p4d::packages:
+  - 'helix-p4d'
+
+perforce_helix::broker::ensure: installed
+perforce_helix::broker::packages:
+  - 'helix-broker'

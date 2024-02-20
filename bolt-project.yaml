@@ -1,5 +1,5 @@
 ---
-name: helix_core
+name: perforce_helix
 plugin-hooks:
   puppet_library:
     plugin: puppet_agent

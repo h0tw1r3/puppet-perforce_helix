@@ -1,13 +1,15 @@
 # @summary install perforce yum repository
 #
+# @param ensure
 # @param gpg_key
 # @param gpg_keyring
 # @param baseurl
 #
-class helix_core::repository::yum (
+class perforce_helix::repository::yum (
   String $gpg_key,
-  String $gpg_keyring = '/etc/pki/rpm-gpg/RPM-GPG-KEY-perforce',
-  String $baseurl = "https://package.perforce.com/yum/rhel/${facts.get('os.release.major').downcase}/${facts.get('os.architecture')}",
+  Enum['present', 'absent'] $ensure = 'present',
+  String $gpg_keyring               = '/etc/pki/rpm-gpg/RPM-GPG-KEY-perforce',
+  String $baseurl                   = "https://package.perforce.com/yum/rhel/${facts.get('os.release.major').downcase}/${facts.get('os.architecture')}",
 ) {
   case $gpg_key {
     /^https?:\/\//: {
@@ -22,7 +24,7 @@ class helix_core::repository::yum (
       }
 
       file { $yum_gpg_key[6,-1]:
-        ensure  => file,
+        ensure  => stdlib::ensure($ensure, 'file'),
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
@@ -34,6 +36,7 @@ class helix_core::repository::yum (
   }
 
   yumrepo { 'perforce':
+    ensure   => $ensure,
     descr    => 'Perforce Repository',
     baseurl  => $baseurl,
     gpgkey   => $yum_gpg_key,

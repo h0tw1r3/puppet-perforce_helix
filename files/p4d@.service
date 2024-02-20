@@ -1,0 +1,30 @@
+# MANAGED BY PUPPET
+#
+[Unit]
+Description=Perforce HelixCore p4d %I server
+After=local-fs.target network-online.target
+Requires=network-online.target
+
+[Service]
+Type=exec
+
+EnvironmentFile=-/opt/perforce/.p4config
+EnvironmentFile=-/opt/perforce/.p4enviro
+EnvironmentFile=/etc/perforce/p4d/%i.conf
+
+User=perforce
+RuntimeDirectory=perforce/%i
+
+ExecStart=/opt/perforce/sbin/p4d $P4D_SERVICE_OPTIONS --pid-file=%t/perforce/%i/p4d.pid
+
+SyslogIdentifier=p4d-%i
+
+PIDFile=%t/perforce/%i/p4d.pid
+
+OOMScoreAdjust=-500
+
+Restart=on-abnormal
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,12 +1,10 @@
 ---
 fixtures:
   repositories:
-    provision:
-      repo: 'https://github.com/h0tw1r3/provision.git'
-      branch: 'fix-docker-cp'
+    provision: 'https://github.com/puppetlabs/provision.git'
     puppet_agent: 'https://github.com/puppetlabs/puppetlabs-puppet_agent.git'
     facts: 'https://github.com/puppetlabs/puppetlabs-facts.git'
-  forge_modules:
-    apt: 'puppetlabs/apt'
-    stdlib: 'puppetlabs/stdlib'
-    yumrepo_core: 'puppetlabs/yumrepo_core'
+    apt: 'https://github.com/puppetlabs/puppetlabs-apt.git'
+    stdlib: 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
+    systemd: 'https://github.com/voxpupuli/puppet-systemd.git'
+    yumrepo_core: 'https://github.com/puppetlabs/puppetlabs-yumrepo_core.git'
